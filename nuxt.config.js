@@ -2,6 +2,13 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+
+  strapi: {
+    // Options
+    url: process.env.API_URL || "http://128.199.214.206:1337",
+    entities: ['post','category']
+  },  
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'hirant2021',
@@ -25,6 +32,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // '~/plugins/api.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,6 +52,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/strapi',
+    '@nuxtjs/composition-api',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

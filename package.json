@@ -12,13 +12,15 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/composition-api": "^0.22.1",
     "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/strapi": "^0.3.0",
     "core-js": "^3.8.3",
     "moment": "^2.29.1",
     "nuxt": "^2.14.12"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.12",
+    "@nuxt/types": "^2.15.3",
     "@nuxt/typescript-build": "^2.0.4",
     "@nuxtjs/tailwindcss": "^3.4.2",
     "@vue/test-utils": "^1.1.2",

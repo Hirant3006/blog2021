@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-2xl p-12 p">
-    <Logo/>
+    <Logo />
     <div class="flex mt-20 flex-col">
       <!-- <SmallSection
         class="mb-8"
@@ -13,11 +13,40 @@
 </template>
 
 <script lang="ts">
-
+import {
+  computed,
+  defineComponent,
+  toRef,
+  toRefs,
+  useFetch,
+} from '@nuxtjs/composition-api'
+import { useArticleList } from '@/compositions'
 
 export default {
+  name:'Main',
   data() {
     return {}
+  },
+  setup() {
+    console.log('setup')
+    const {
+      state: articleListState,
+      getArticleList,
+    } = useArticleList()
+
+    const fetchData = async () => {
+        await getArticleList()
+    }
+
+    const { fetchState } = useFetch(() => fetchData())
+
+    console.log('finish')
+
+    return {
+      fetchData,
+      fetchState,
+      ...toRefs(articleListState)
+    }
   },
 }
 </script>
