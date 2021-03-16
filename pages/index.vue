@@ -2,12 +2,12 @@
   <div class="mx-auto max-w-2xl p-12 p">
     <Logo />
     <div class="flex mt-20 flex-col">
-      <!-- <SmallSection
+      <SmallSection
         class="mb-8"
-        v-for="(item, index) in posts"
+        v-for="(item, index) in articleList"
         :data="item"
         :key="index"
-      /> -->
+      />
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+
+  },
   setup() {
     console.log('setup')
     const {
@@ -35,13 +38,15 @@ export default {
     } = useArticleList()
 
     const fetchData = async () => {
-        await getArticleList()
+         await getArticleList()
+        // console.log({data})
     }
 
     const { fetchState } = useFetch(() => fetchData())
 
-    console.log('finish')
+    console.log(fetchState)
 
+    console.log('finish')
     return {
       fetchData,
       fetchState,
