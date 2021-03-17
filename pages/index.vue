@@ -31,7 +31,6 @@ export default {
 
   },
   setup() {
-    console.log('setup')
     const {
       state: articleListState,
       getArticleList,
@@ -44,9 +43,6 @@ export default {
 
     const { fetchState } = useFetch(() => fetchData())
 
-    console.log(fetchState)
-
-    console.log('finish')
     return {
       fetchData,
       fetchState,

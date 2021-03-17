@@ -1,7 +1,11 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
 
+  env: {
+    baseUrl: process.env.STRAPI_API || 'http://localhost:3000'
+  },
+
+  target: 'static',
 
   strapi: {
     // Options
@@ -31,7 +35,10 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/repository'],
+  plugins: [
+    '@/plugins/repository',
+    '@/plugins/inject'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -55,12 +62,26 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://hirant.xyz:1337/',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en'
+    }
+  },
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
     }
   },
 

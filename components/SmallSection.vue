@@ -4,7 +4,7 @@
       @click="
         () =>
           $router.push({
-            path: `/${data.title_url.replaceAll(' ', '-')}`,
+            path: data.slug ? `/article/${data.slug.replaceAll(' ', '-')}` : '/',
             params: { id: data.id },
           })
       "
@@ -36,13 +36,8 @@ export default {
   name: 'SmallSection',
   props: ['data'],
   computed: {
-    titleUrl() {
-      const data = this.data.titleUrl
-      return data.replace
-    },
   },
   mounted() {
-    console.log(this.$globalFunc)
   },
 }
 </script>
