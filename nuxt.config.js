@@ -13,6 +13,10 @@ export default {
     entities: ['post','category']
   },  
 
+  proxy: {
+    '/uploads': 'http://hirant.xyz:1337/',
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'hirant2021',
@@ -37,7 +41,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/repository',
-    '@/plugins/inject'
+    '@/plugins/showdown',
+    '@/plugins/inject',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -59,6 +64,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/strapi',
     '@nuxtjs/composition-api',
+    '@nuxtjs/markdownit',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

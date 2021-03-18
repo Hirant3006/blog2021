@@ -15,7 +15,6 @@
 <script lang="ts">
 import {
   computed,
-  defineComponent,
   toRef,
   toRefs,
   useFetch,
