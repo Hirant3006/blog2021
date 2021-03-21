@@ -20,7 +20,7 @@
         <span class="underline text-xs"> #{{ item.name }} </span>
       </div>
     </div>
-    <!-- <span class="text-sm mb-1 block">{{formatTime(data.sys.createdAt)}} ☕ 1 min read </span> -->
+    <span class="text-sm mb-1 block">{{$globalFunc.formatTime(data.content)}} ☕ {{$globalFunc.countWord(data.content)}} min read </span>
     <span class="text-xs mb-1 block">{{
       $globalFunc.formatTime(data.created_at)
     }}</span>
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import moment from 'moment'
 export default {
   name: 'SmallSection',
   props: ['data'],

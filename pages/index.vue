@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-auto max-w-2xl p-12 p">
-    <Logo />
+  <div class="mx-auto max-w-2xl p">
+    <Logo class='pt-12'/>
     <div class="flex mt-20 flex-col">
       <SmallSection
         class="mb-8"

@@ -4,6 +4,24 @@
   </div>
 </template>
 
+<script lang="ts">
+import { mapActions } from 'vuex'
+
+export default {
+  fetch() {
+    console.log('hello')
+  },
+  setup() {},
+  methods: {
+    ...mapActions({ getListArticle: 'article/getArticleList' }),
+  },
+  mounted() {
+    console.log('hello')
+    this.getListArticle()
+  },
+}
+</script>
+
 <style>
 @font-face {
   font-family: 'BeVietNam';
@@ -11,11 +29,13 @@
 }
 @font-face {
   font-family: 'MontserratBold';
-  src: local('MontserratBold'), url(../fonts/MontserratBold.ttf) format('truetype');
+  src: local('MontserratBold'),
+    url(../fonts/MontserratBold.ttf) format('truetype');
 }
 @font-face {
   font-family: 'MontserratRegular';
-  src: local('MontserratRegular'), url(../fonts/MontserratRegular.ttf) format('truetype');
+  src: local('MontserratRegular'),
+    url(../fonts/MontserratRegular.ttf) format('truetype');
 }
 html {
   font-family: MontserratRegular, serif;

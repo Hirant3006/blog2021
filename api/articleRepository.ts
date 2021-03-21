@@ -40,7 +40,6 @@ type ArticleListResponse = ResponseTypes<{
 
 export const articleRepository = (axios: NuxtAxiosInstance) => ({
   getArticle(slug: Slug): ArticleResponse {
-    console.log({slug})
     return axios.$get(`/posts`,{
       params:{
         slug

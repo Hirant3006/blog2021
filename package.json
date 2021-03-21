@@ -21,6 +21,7 @@
     "markdown-it-vue": "^1.1.6",
     "moment": "^2.29.1",
     "nuxt": "^2.14.12",
+    "sass": "^1.32.8",
     "vue-showdown": "^2.4.1"
   },
   "devDependencies": {

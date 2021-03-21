@@ -16,25 +16,19 @@
         </div>
       </div>
       <span class="text-sm mb-1 block"
-        >{{ $globalFunc.formatTime(article.created_at) }} ☕ 1 min read
+        >{{ $globalFunc.formatTime(article.created_at) }} ☕ {{$globalFunc.countWord(article.content)}} min read
       </span>
 
       <VueShowdown
-        class="mt-10"
+        class="mt-10 markdown"
         :markdown="article.content"
         flavor="github"
         :options="{ emoji: true }"
+        id="markdown"
       />
-      <!-- <VueShowdown
-        v-if="article.content"
-        :markdown="article.content"
-      /> -->
-      <!-- <div
-        class="prose prose-lg text-gray-500 mx-auto"
-        v-if="article.content"
-        v-html="article.content"
-      ></div> -->
     </template>
+
+    <Logo class="mt-20 pb-20" :isFooter="true" :isDetail="true" />
 
     <!-- <article v-html="$md.render(data.fields.content)"></article> -->
   </div>
@@ -54,11 +48,12 @@ export default {
   data() {
     return {}
   },
-  components: {
-  },
+  components: {},
   setup() {
     const { route } = useContext()
-    const slug = route.value.params.slug
+    let slug = route.value.params.slug.replace(/-/g, ' ')
+
+    // slug = slug.replaceAll('-',' ')
 
     const { state: articleState, getArticle } = useArticleSlug()
 
@@ -68,6 +63,7 @@ export default {
     }
 
     const { fetchState } = useFetch(() => fetchData())
+
     return {
       fetchData,
       fetchState,
@@ -76,3 +72,16 @@ export default {
   },
 }
 </script>
+
+<style lang='scss'>
+#markdown {
+  a {
+    color: #FFCBCB;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  img {
+    margin: 20px auto;
+  }
+}
+</style>

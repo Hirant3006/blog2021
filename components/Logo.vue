@@ -2,13 +2,13 @@
   <div :class="`flex flex-col justify-between h-auto w-285`">
     <h3
       @click="() => $router.push('/')"
-      :class="`cursor-pointer mb-12 font-black leading-10 mb-3 font-title ${
+      :class="`cursor-pointer mb-8 font-black leading-10 mb-3 font-title ${
         isDetail ? 'text-pink  text-3xl' : 'text-white  text-4xl'
       }`"
     >
       Hirany
     </h3>
-    <div v-if="!isDetail" class="flex">
+    <div v-if="!isDetail || isFooter" class="flex">
       <img class="h-12" src="~/assets/logo.png" alt="" />
       <div class="ml-3 text-left">
         <div class="flex flex-col text-white">
@@ -28,6 +28,10 @@
 export default {
   props: {
     isDetail: {
+      default: false,
+      type: Boolean,
+    },
+    isFooter: {
       default: false,
       type: Boolean,
     },

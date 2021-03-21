@@ -7,6 +7,10 @@ export default {
 
   target: 'static',
 
+  router: {
+    middleware: 'load-content'
+  },
+
   strapi: {
     // Options
     url: process.env.API_URL || "http://128.199.214.206:1337",
