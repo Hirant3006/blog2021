@@ -1,43 +1,47 @@
 <template>
   <div class="mx-auto max-w-2xl p">
-    <Logo class='pt-12'/>
+    <Logo class="pt-12" />
     <div class="flex mt-20 flex-col">
-      <SmallSection
-        class="mb-8"
-        v-for="(item, index) in articleList"
-        :data="item"
-        :key="index"
-      />
+      <div v-if="loadingArticles">Loading...</div>
+      <template v-else>
+        <SmallSection
+          class="mb-8"
+          v-for="(item, index) in articles"
+          :data="item"
+          :key="index"
+        />
+      </template>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  toRef,
-  toRefs,
-  useFetch,
-} from '@nuxtjs/composition-api'
+import { computed, toRef, toRefs, useFetch } from '@nuxtjs/composition-api'
 import { useArticleList } from '@/compositions'
+import { Article } from '@/types/'
 
 export default {
-  name:'Main',
+  name: 'Main',
   data() {
     return {}
   },
-  mounted() {
-
+  computed: {
+    articles(): Article[] {
+      const _this: any = this
+      return _this.$store.state.article.articleList
+    },
+    loadingArticles(): Boolean {
+      const _this: any = this
+      return _this.$store.state.article.loading
+    },
   },
+  mounted() {},
   setup() {
-    const {
-      state: articleListState,
-      getArticleList,
-    } = useArticleList()
+    const { state: articleListState, getArticleList } = useArticleList()
 
     const fetchData = async () => {
-         await getArticleList()
-        // console.log({data})
+      await getArticleList()
+      // console.log({data})
     }
 
     const { fetchState } = useFetch(() => fetchData())
@@ -45,7 +49,7 @@ export default {
     return {
       fetchData,
       fetchState,
-      ...toRefs(articleListState)
+      ...toRefs(articleListState),
     }
   },
 }

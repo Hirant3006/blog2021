@@ -9,15 +9,14 @@ import { mapActions } from 'vuex'
 
 export default {
   fetch() {
-    console.log('hello')
   },
   setup() {},
   methods: {
     ...mapActions({ getListArticle: 'article/getArticleList' }),
   },
   mounted() {
-    console.log('hello')
-    this.getListArticle()
+    let _this: any = this
+    _this.getListArticle()
   },
 }
 </script>
