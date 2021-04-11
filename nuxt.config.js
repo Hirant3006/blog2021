@@ -18,7 +18,7 @@ export default {
   },  
 
   proxy: {
-    '/uploads': 'http://128.199.214.206z:1337/',
+    '/uploads': 'http://128.199.214.206:1337/',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -74,7 +74,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://128.199.214.206z:1337/',
+    baseURL: 'http://128.199.214.206:1337/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
